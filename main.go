@@ -12,19 +12,6 @@ import (
 	"github.com/google/uuid"
 )
 
-//
-//backend team : golnag, postgres, aws, dynamoDB
-// mobile : android , IOS
-// react js
-
-// aws side kubernetes, docker, cicd, gitlab
-
-// learning corve
-// join and work not
-// all flexible
-
-//
-
 // Task holds the metadata about given task
 type Task struct {
 	ID           uuid.UUID
