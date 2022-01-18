@@ -2,6 +2,12 @@
 alivecor assignment task
 
 
+### Improvements
+* Number of Task/Timeout value/ can be accepted from command line arguments.
+* Code Refactor is needed, remove unwanted comments/steps which are not in use.
+* Each Gorutines can we separated as diff func.
+
+
 ### Insctuction to build and use the service.
 #### 1. Clone the git project.
 `git clone https://github.com/ajaymahar/alivecor.git && cd alivecor`
@@ -51,7 +57,3 @@ Verti System assignment
 $ GOOS=windows GOARCH=386 go build -o alivecor.exe main.go
 ```
 
-### Improvements
-* Number of Task/Timeout value/ can be accepted from command line arguments.
-* Code Refactor is needed, remove unwanted comments/steps which are not in use.
-* Each Gorutines can we separated as diff func.
