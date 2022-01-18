@@ -33,6 +33,7 @@ func getNewTask() *Task {
 }
 
 // getRandomStatus will retun random status everytime when it's get called
+// added extra unwanted values to semulate the timeout
 func getRandomStatus() string {
 	rand.Seed(time.Now().UnixNano())
 	s := []string{"completed", "failed", "retry", "networkDelay", "pending"}
@@ -54,11 +55,12 @@ func taskExecutor(task *Task) *Task {
 
 	// m.Lock()
 	// log.Println(task)
-	log.Println("executing task...")
+	log.Println("executing task...: ", task.ID)
 	status := getRandomStatus()
 	log.Println("random status: ", status)
 
 	// check if task is completed
+	// if we get randomStatus as 'completed' change the task field
 	if status == "completed" {
 		task.IsCompleted = true
 		// m.Unlock()
@@ -66,7 +68,11 @@ func taskExecutor(task *Task) *Task {
 	}
 	return task
 }
+
 func main() {
+
+	// NOTE: code can be refactored and written in diff functions.
+	// For simplicity I have created all gorutines in main
 
 	// wg := sync.WaitGroup{}
 	// No of task
@@ -109,10 +115,12 @@ func main() {
 		// t := <-queue
 		for t := range queue {
 			// get the time taken by the task
+			// NOTE: timeout can be handled using context with timeout
 			remaningTime := time.Since(t.CreationTime)
 			// log.Println(remaningTime)
 
-			//cancel the task if creation time is more than 100 milsec
+			//cancel the task if creation time is more than 500 milsec
+			// NOTE: hardcoded timeout can be used as var
 			if remaningTime < 500*time.Millisecond {
 				// t := <-failedQueue
 				if !t.IsCompleted {
