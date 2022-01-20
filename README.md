@@ -46,10 +46,7 @@ $ GOOS=darwin GOARCH=386 go build -o alivecor main.go && ./alivecor
 ### **Windows**
 #### 64-bit
 ```bash
-$ GOOS=windows GOARCH=amd6
-Verti System assignment 
-
-4 go build -o alivecor.exe main.go
+$ GOOS=windows GOARCH=amd64 go build -o alivecor.exe main.go
 ```
 
 #### 32-bit
